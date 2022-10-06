@@ -1,22 +1,22 @@
 import React from 'react';
-import n from './Nav.module.css';
+import styleCss from './Nav.module.css';
 
 const Navbar = () => {
   return (
-    <nav className={n.nav}>
-      <div className={n.item}>
+    <nav className={styleCss.nav}>
+      <div className={styleCss.item}>
         <a>Profile</a>
       </div>
-      <div className={`${n.item} ${n.active}`}>
+      <div className={`${styleCss.item} ${styleCss.active}`}>
         <a>Message</a>
       </div>
-      <div className={n.item}>
+      <div className={styleCss.item}>
         <a>News</a>
       </div>
-      <div className={n.item}>
+      <div className={styleCss.item}>
         <a>Music</a>
       </div>
-      <div className={n.item}>
+      <div className={styleCss.item}>
         <a>Settings</a>
       </div>
     </nav>

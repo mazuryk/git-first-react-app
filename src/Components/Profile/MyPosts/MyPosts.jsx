@@ -1,5 +1,5 @@
 import React from "react";
-import n from "./MyPosts.module.css";
+import styleCss from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = () => {
@@ -10,7 +10,7 @@ const MyPosts = () => {
         <textarea></textarea>
         <button>Add post</button>
       </div>
-      <div className={n.posts}>
+      <div className={styleCss.posts}>
         <Post message='Hi, how are you?' like='15' />
         <Post message="It's is my first post" like ="20"/>
       </div>

@@ -2,9 +2,6 @@
     width: 100%;
   }
   
-  .content {
-    grid-area: content; /*просто називаємо */
-    background-color: orange;
-  }
+
 
   
