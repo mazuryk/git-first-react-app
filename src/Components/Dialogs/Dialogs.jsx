@@ -1,18 +1,35 @@
 import React from "react";
 import styleCss from "./Dialogs.module.css";
+import { NavLink } from "react-router-dom";
 
 const Dialogs = (props) => {
   return (
     <div className={styleCss.dialogs}>
       <div className={styleCss.dialog_with_user}>
-        <div className={styleCss.item_dialog+' '+styleCss.active}>Sashko</div>
-        <div className={styleCss.item_dialog}>Marichka</div>
-        <div className={styleCss.item_dialog}>Ustym</div>
-        <div className={styleCss.item_dialog}>tato KiKi</div>
-        <div className={styleCss.item_dialog}>mama Katya</div>
-        <div className={styleCss.item_dialog}>babusya Nadya</div>
-        <div className={styleCss.item_dialog}>did Ivan</div>
-        <div className={styleCss.item_dialog}>babusya Natasha</div>
+        <div className={styleCss.item_dialog + " " + styleCss.active}>
+          <NavLink to="/dialogs/1">Sashko</NavLink>
+        </div>
+        <div className={styleCss.item_dialog}>
+          <NavLink to="/dialogs/2">Marichka</NavLink>
+        </div>
+        <div className={styleCss.item_dialog}>
+          <NavLink to="/dialogs/3">Ustym</NavLink>
+        </div>
+        <div className={styleCss.item_dialog}>
+          <NavLink to="/dialogs/4">tato KiKi</NavLink>
+        </div>
+        <div className={styleCss.item_dialog}>
+          <NavLink to="/dialogs/5">mama Katya</NavLink>
+        </div>
+        <div className={styleCss.item_dialog}>
+          <NavLink to="/dialogs/6">babusya Nadya</NavLink>
+        </div>
+        <div className={styleCss.item_dialog}>
+          <NavLink to="/dialogs/7">did Ivan</NavLink>
+        </div>
+        <div className={styleCss.item_dialog}>
+        <NavLink to="/dialogs/8">babusya Natasha</NavLink>
+          </div>
       </div>
       <div className={styleCss.messages}>
         <div className={styleCss.messages}>Hi</div>
