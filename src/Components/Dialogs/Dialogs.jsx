@@ -2,40 +2,39 @@ import React from "react";
 import styleCss from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
 
+const DialogItem = (props) => {
+  const path = '/dialogs/' + props.id; 
+  return ( 
+    <div className={styleCss.item_dialog + " " + styleCss.active}>
+      <NavLink to={path}>{props.name}</NavLink>
+    </div>
+  );
+};
+
+const Message = (props) => {
+  return (
+  <div className={styleCss.messages}>{props.message}</div>
+  )
+}
+
 const Dialogs = (props) => {
   return (
     <div className={styleCss.dialogs}>
       <div className={styleCss.dialog_with_user}>
-        <div className={styleCss.item_dialog + " " + styleCss.active}>
-          <NavLink to="/dialogs/1">Sashko</NavLink>
-        </div>
-        <div className={styleCss.item_dialog}>
-          <NavLink to="/dialogs/2">Marichka</NavLink>
-        </div>
-        <div className={styleCss.item_dialog}>
-          <NavLink to="/dialogs/3">Ustym</NavLink>
-        </div>
-        <div className={styleCss.item_dialog}>
-          <NavLink to="/dialogs/4">tato KiKi</NavLink>
-        </div>
-        <div className={styleCss.item_dialog}>
-          <NavLink to="/dialogs/5">mama Katya</NavLink>
-        </div>
-        <div className={styleCss.item_dialog}>
-          <NavLink to="/dialogs/6">babusya Nadya</NavLink>
-        </div>
-        <div className={styleCss.item_dialog}>
-          <NavLink to="/dialogs/7">did Ivan</NavLink>
-        </div>
-        <div className={styleCss.item_dialog}>
-        <NavLink to="/dialogs/8">babusya Natasha</NavLink>
-          </div>
+        <DialogItem name='Сашко' id='1'/>
+        <DialogItem name='Марічка' id='2'/>
+        <DialogItem name='Устим' id='3'/>
+        <DialogItem name='Бабуся Надя' id='4'/>
+        <DialogItem name='Дід Іван' id='5'/>
+        <DialogItem name='Бабуся Наталя' id='6'/>
+        <DialogItem name='тато Кікі' id='7'/>
+        <DialogItem name='Пломбочка' id='8'/>
       </div>
       <div className={styleCss.messages}>
-        <div className={styleCss.messages}>Hi</div>
-        <div className={styleCss.messages}>Hello</div>
-        <div className={styleCss.messages}>How is your studying?</div>
-        <div className={styleCss.messages}>It is normal</div>
+        <Message message='Привіт' />
+        <Message message='Вітаю!' />
+        <Message message='Як твоє навчання?' />
+        <Message message='Добре' />
       </div>
     </div>
   );
