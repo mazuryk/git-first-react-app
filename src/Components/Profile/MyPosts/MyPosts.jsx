@@ -3,10 +3,13 @@ import styleCss from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = () => {
-  let postsData = [
+  let posts = [
     { id: 1, post: "Як справи, світе?", likesCount : 15 },
     { id: 2, post: "Це мій порший пост!", likesCount : 30 }
   ];
+
+  const postsElement =
+    posts.map(el => <Post message={el.post} like={el.likesCount} />);
 
 
   return (
@@ -21,8 +24,7 @@ const MyPosts = () => {
         </div>
       </div>
       <div className={styleCss.posts}>
-        <Post message={postsData[0].post} like={postsData[0].likesCount} />
-        <Post message={postsData[1].post} like={postsData[1].likesCount} />
+        {postsElement}
       </div>
     </div>
   );
