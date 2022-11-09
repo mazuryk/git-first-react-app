@@ -17,6 +17,12 @@
 
 .messages{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.newMessage{
+    margin-top: auto;
 }
 
 .message{

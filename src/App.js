@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dialogs from "./Components/Dialogs/Dialogs";
 import Header from "./Components/Header/Header";
@@ -10,14 +10,13 @@ import Settings from "./Components/Settings/Settings";
 
 const App = (props) => {
   return (
-    <BrowserRouter>
       <div className="app-wrapper">
         <Header />
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs Dialogs={props.Dialogs} Messages={props.Messages} />} />
-            <Route path="/profile" element={<Profile Posts={props.Posts} />} />
+            <Route path="/dialogs/*" element={<Dialogs dialogsState={props.state.DialogsPage} />} />
+            <Route path="/profile" element={<Profile profileState={props.state.ProfilePage} />} />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />}/>
@@ -25,7 +24,6 @@ const App = (props) => {
         </div>
         <footer></footer>
       </div>
-    </BrowserRouter>
   );
 };
 
