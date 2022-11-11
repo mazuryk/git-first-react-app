@@ -29,4 +29,16 @@ const state = {
 
 }
 
+export const addPost = (postMessage) =>{
+    debugger;
+    const newPost = {
+        id: 4, //поки не важливо
+        post: postMessage,
+        likesCount: 0
+    };
+
+    state.ProfilePage.Posts.push(newPost);
+}
+
+
 export default state;

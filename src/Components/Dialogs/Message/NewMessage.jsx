@@ -16,7 +16,7 @@ const NewMessage = () => {
         <textarea ref={newMessageElement}></textarea>
       </span>
       <span>
-        <button onClick={addMessage}>Додати</button>
+        <button onClick={addMessage}>Відправити повідомлення</button>
       </span>
     </div>
   );
