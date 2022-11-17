@@ -1,10 +1,13 @@
+import { renderEntireTree } from "../Render";
+
 const state = {
     ProfilePage : {
         Posts : [
             { id: 1, post: "Як справи, світе?", likesCount : 15 },
             { id: 2, post: "УРа!", likesCount : 30 },
-            { id: 3, post: "Це мій порший пост!", likesCount : 10 }
+            { id: 3, post: "Це мій перший пост!", likesCount : 10 }
         ],
+        newPostText : "mazuryk"
     },
     DialogsPage : {
         Dialogs : [
@@ -29,15 +32,21 @@ const state = {
 
 }
 
-export const addPost = (postMessage) =>{
-    debugger;
+export const addPost = () =>{
     const newPost = {
         id: 4, //поки не важливо
-        post: postMessage,
+        post: state.ProfilePage.newPostText,
         likesCount: 0
     };
 
     state.ProfilePage.Posts.push(newPost);
+    state.ProfilePage.newPostText = '';
+    renderEntireTree(state);
+}
+
+export const updateNewPostText = (newText)=>{
+    state.ProfilePage.newPostText = newText;
+    renderEntireTree (state);
 }
 
 

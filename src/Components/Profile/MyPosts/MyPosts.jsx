@@ -11,18 +11,20 @@ const MyPosts = (props) => {
   const newPostElement = React.createRef(); //метод, який створює посилання
 
   const addPosts = () => {
-    debugger;
-    const text = newPostElement.current.value ;//current посилається на нативний html елемент
-    props.addPost(text);
-
+    props.addPost();
   } 
+
+  const onPostChange = () =>{
+    const text = newPostElement.current.value;
+    props.updateNewPostText(text);
+  }
 
   return (
     <div className={styleCss.postBlock}>
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea ref={newPostElement} ></textarea> {/* прив'язали посилання до елемента  */}
+          <textarea onChange ={onPostChange} ref={newPostElement} value={props.newPostText} /> {/* прив'язали посилання до елемента  */}
         </div>
         <div>
           <button onClick={ addPosts }>Add post</button> {/* повісили оброботчик кліку  */} 

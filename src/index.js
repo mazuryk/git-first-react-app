@@ -3,20 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { renderEntireTree } from './Render';
 import state from './Redux/state.js';
-import { addPost } from './Redux/state.js';
-import { BrowserRouter } from 'react-router-dom';
 
-// addPost('первый пост через пропс');
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <App state={state} addPost={addPost}/>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+renderEntireTree (state);
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
