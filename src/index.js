@@ -3,11 +3,29 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { renderEntireTree } from './Render';
-import state from './Redux/state.js';
+import store from './Redux/state.js';
+import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-renderEntireTree (state);
+const reRenderEntireTree = (state) => {
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App 
+          state={state} 
+          addPost={store.addPost.bind(store)}
+          updateNewPostText={store.updateNewPostText.bind(store)} 
+        />
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+};
+
+reRenderEntireTree (store.getState());
+
+store.subscribe (reRenderEntireTree);
 
 
 // If you want to start measuring performance in your app, pass a function
