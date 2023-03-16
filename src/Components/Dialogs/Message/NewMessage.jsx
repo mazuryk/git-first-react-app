@@ -1,19 +1,29 @@
 import React from "react";
 import styleCss from "../Dialogs.module.css";
+import {addMessageActionCreator, updateNewMessageTextActionCreator } from "../../../Redux/dialogs-reducer"
 
-const NewMessage = () => {
-  const newMessageElement = React.createRef();
+
+const NewMessage = (props) => {
+  // const newMessageElement = React.createRef();
 
   const addMessage = () => {
-    const text = newMessageElement.current.value;
-    alert (text);
+    props.store.dispatch(addMessageActionCreator())
+  }
+
+  const onMessageChange = (e) => {
+    const text = e.target.value;
+    props.store.dispatch(updateNewMessageTextActionCreator(text));
   }
 
 
   return (
     <div className={styleCss.newMessage}>
       <span>
-        <textarea ref={newMessageElement}></textarea>
+        <textarea onChange={onMessageChange} 
+        placeholder = {"enter text"}
+        value = {props.store.getState().dialogsPage.newMessageText}
+        // ref={newMessageElement}
+         ></textarea>
       </span>
       <span>
         <button onClick={addMessage}>Відправити повідомлення</button>

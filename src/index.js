@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './Redux/state.js';
+import store from './Redux/redux-store.js';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -16,6 +16,7 @@ const reRenderEntireTree = (state) => {
         <App 
           state={state} 
           dispatch={store.dispatch.bind(store)}
+          store={store}
         />
       </BrowserRouter>
     </React.StrictMode>
@@ -24,7 +25,10 @@ const reRenderEntireTree = (state) => {
 
 reRenderEntireTree (store.getState());
 
-store.subscribe (reRenderEntireTree);
+store.subscribe (()=>{
+  const state = store.getState();
+  reRenderEntireTree(state)
+});
 
 
 // If you want to start measuring performance in your app, pass a function

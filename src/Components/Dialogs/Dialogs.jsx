@@ -6,20 +6,25 @@ import Message from "./Message/Message";
 import NewMessage from "./Message/NewMessage";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.dialogsState.Dialogs.map((el) => (
+
+  const state = props.store.getState().dialogsPage;
+  let dialogsElements = state.Dialogs.map((el) => (
     <DialogItem name={el.name} id={el.id} />
   ));
 
-  let messagesElement = props.dialogsState.Messages.map((el) => (
+  let messagesElement = state.Messages.map((el) => (
     <Message message={el.message} />
   ));
+
+  // debugger;
 
   return (
     <div className={styleCss.dialogs}>
       <div className={styleCss.dialog_with_user}>{dialogsElements}</div>
       <div className={styleCss.messages}>
         {messagesElement}
-        <NewMessage />
+        <NewMessage 
+        store={props.store} />
       </div>
     </div>
   );
