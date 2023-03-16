@@ -6,13 +6,13 @@ import {addMessageActionCreator, updateNewMessageTextActionCreator } from "../..
 const NewMessage = (props) => {
   // const newMessageElement = React.createRef();
 
-  const addMessage = () => {
-    props.store.dispatch(addMessageActionCreator())
+  const onAddMessage = () => {
+    props.addMessage()
   }
 
   const onMessageChange = (e) => {
     const text = e.target.value;
-    props.store.dispatch(updateNewMessageTextActionCreator(text));
+    props.messageChange(text)
   }
 
 
@@ -21,12 +21,12 @@ const NewMessage = (props) => {
       <span>
         <textarea onChange={onMessageChange} 
         placeholder = {"enter text"}
-        value = {props.store.getState().dialogsPage.newMessageText}
+        value = {props.newMessageText}
         // ref={newMessageElement}
          ></textarea>
       </span>
       <span>
-        <button onClick={addMessage}>Відправити повідомлення</button>
+        <button onClick={onAddMessage}>Відправити повідомлення</button>
       </span>
     </div>
   );

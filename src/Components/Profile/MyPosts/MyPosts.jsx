@@ -1,25 +1,27 @@
 import React from "react";
 import styleCss from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator, updateNewPostTextActionCreator } from "../../../Redux/profile-reducer"
 
 
 
 const MyPosts = (props) => {
+  // debugger;
+
 
   const postsElement =
-    props.Posts.map(el => <Post message={el.post} like={el.likesCount} />);
+    props.posts.map(el => <Post message={el.post} like={el.likesCount} />);
 
   const newPostElement = React.createRef(); //метод, який створює посилання
 
-  const addPosts = () => {
-    //props.addPost();
-    props.dispatch(addPostActionCreator());
+  const onAddPost = () => {
+    props.addPost();
+
   } 
 
   const onPostChange = () =>{
     const text = newPostElement.current.value;
-    props.dispatch(updateNewPostTextActionCreator(text));
+    props.updateNewPostText(text);
+
   }
 
   return (
@@ -30,7 +32,7 @@ const MyPosts = (props) => {
           <textarea onChange ={onPostChange} ref={newPostElement} value={props.newPostText} /> {/* прив'язали посилання до елемента  */}
         </div>
         <div>
-          <button onClick={ addPosts }>Add post</button> {/* повісили оброботчик кліку  */} 
+          <button onClick={ onAddPost }>Add post</button> {/* повісили оброботчик кліку  */} 
         </div>
       </div>
       <div className={styleCss.posts}>

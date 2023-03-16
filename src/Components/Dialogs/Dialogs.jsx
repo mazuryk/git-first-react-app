@@ -7,12 +7,11 @@ import NewMessage from "./Message/NewMessage";
 
 const Dialogs = (props) => {
 
-  const state = props.store.getState().dialogsPage;
-  let dialogsElements = state.Dialogs.map((el) => (
+  let dialogsElements = props.dialogs.map((el) => (
     <DialogItem name={el.name} id={el.id} />
   ));
 
-  let messagesElement = state.Messages.map((el) => (
+  let messagesElement = props.messages.map((el) => (
     <Message message={el.message} />
   ));
 
@@ -24,7 +23,10 @@ const Dialogs = (props) => {
       <div className={styleCss.messages}>
         {messagesElement}
         <NewMessage 
-        store={props.store} />
+          addMessage={props.addMessage}
+          messageChange={props.messageChange}
+          newMessageText={props.newMessageText}
+          />
       </div>
     </div>
   );
