@@ -26,20 +26,27 @@ const initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
 
-    if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        state.newMessageText = action.newText;
-    }
-    
-    if (action.type === ADD_MESSAGE) {
-        const newMessage = {
-            id: 6, //поки не важливо
-            message: state.newMessageText,
-        };
-        state.messages.push(newMessage);
-        state.newMessageText = '';
-    }
+    switch (action.type) {
+        case UPDATE_NEW_MESSAGE_TEXT:
+             return {
+                ...state,
+                newMessageText: action.newText
+            };
 
-    return state;
+        case ADD_MESSAGE:
+            const newMessage = {
+                id: 6, //поки не важливо
+                message: state.newMessageText,
+            };
+            return {
+                ...state,
+                newMessageText: '',
+                messages: [...state.messages, newMessage] //перезапише старий масив, який є у state
+            };
+
+        default:
+            return state;
+    }
 }
 
 export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
